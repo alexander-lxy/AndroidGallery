@@ -1,0 +1,15 @@
+@startuml
+participant User
+participant UI
+participant Presenter
+participant Model
+participant APIService
+
+User -> UI : Input name and password
+UI -> Presenter : presenter.login()
+Presenter -> Model : Invoke request
+Model -> API : Send login request (Retrofit)
+APIService --> Model : Return login response
+Model --> Presenter : Handle login response
+Presenter --> UI : Show login result
+@enduml
